@@ -1,0 +1,62 @@
+﻿<Window x:Class="ExcelCompare.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ExcelComparer" Width="694" Height="551">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="500" />
+            <RowDefinition Height="500" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="600"/>
+        </Grid.ColumnDefinitions>
+        <RadioButton x:Name="radSingleExcel" Grid.Row="0" GroupName="ExcelSelection" IsChecked="True" Checked="radSingleExcel_Checked" Margin="10,0,-10,0">Sheets In SingleExcel</RadioButton>
+        <RadioButton x:Name="radBtnTwoExcels" Grid.Row="0" GroupName="ExcelSelection" Margin="168,0,-168,0" Checked="radBtnTwoExcels_Checked">Multiple Excels</RadioButton>
+        <Grid x:Name="gridSingleExcel" Grid.Row="1" Visibility="Visible" Margin="5,10,5,37">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="600"/>
+            </Grid.ColumnDefinitions>
+            <Label x:Name="lblPleaseEnterPath" Grid.Row="0">Please enter the path:</Label>
+            <TextBox x:Name="txtBoxFilePath" Grid.Row="1" Padding="0" Margin="0,5,31,5"/>            
+            <Label x:Name="lblPleaseEnterSheetNumbers" Grid.Row="2" Margin="0,0,406,0" >Please enter the sheet numbers:</Label>
+            <Label Grid.Row="3">FromStartSheet:</Label>
+            <ComboBox  Grid.Row="3" x:Name="comboFromStartSheet" Margin="99,5,462,5" Loaded="comboFromStartSheet_Loaded"></ComboBox>
+            <Label Grid.Row="3" Margin="143,0,365,0">FromEndSheet:</Label>
+            <ComboBox  Grid.Row="3" x:Name="comboFromEndSheet" Margin="240,5,306,5" Loaded="comboFromEndSheet_Loaded"></ComboBox>
+            <!--<TextBox x:Name="txtBoxFromSheetNumbers" Grid.Row="3" Padding="0" Margin="42,5,506,6" />-->
+            <Label Grid.Row="3" Margin="299,0,220,0">ToStartSheet:</Label>
+            <ComboBox  Grid.Row="3" x:Name="comboToStartSheet" Margin="385,5,173,5" Loaded="comboToStartSheet_Loaded"></ComboBox>
+            <Label Grid.Row="3" Margin="432,0,85,0">ToEndSheet:</Label>
+            <ComboBox  Grid.Row="3" x:Name="comboToEndSheet" Margin="515,5,46,5" Loaded="comboToEndSheet_Loaded"></ComboBox>
+            <!--<TextBox x:Name="txtBoxToSheetNumbers" Grid.Row="3" Padding="0" Margin="168,5,369,6" />-->
+            <!--Row 4-->
+            <Label Grid.Row="4">From RowLimit:</Label>
+            <TextBox x:Name="txtBoxFromRowLimit" Grid.Row="4" Padding="0" Margin="94,6,462,5" />
+            <Label Grid.Row="4" Margin="138,0,360,0">From ColLimit:</Label>
+            <TextBox x:Name="txtBoxFromColLimit" Grid.Row="4" Padding="0" Margin="228,6,328,5" />
+            <Label Grid.Row="4" Margin="290,0,234,0">To RowLimit:</Label>
+            <TextBox x:Name="txtBoxToRowLimit" Grid.Row="4" Padding="0" Margin="371,6,186,5" />
+            <Label Grid.Row="4" Margin="432,0,98,0">To ColLimit:</Label>
+            <TextBox x:Name="txtBoxToColLimit" Grid.Row="4" Padding="0" Margin="507,6,46,5" />
+            <Button Grid.Row="5" x:Name="btnCompareSheets" Padding="0" Height="21" VerticalAlignment="Top" Margin="0,5,488,0" Click="btnCompareSheets_Click">Compare From-To!</Button>
+            <Label x:Name="lblDifferenceCount" Grid.Row="6" Margin="0,0,19,0"></Label>
+            <ScrollViewer Grid.Row="7" Margin="0,0,19,-195">
+                <TextBox Background="Transparent" x:Name="txtBlockFilesSheetDifference" BorderThickness="0" IsReadOnly="True" TextWrapping="Wrap" Height="206" Width="556" />
+            </ScrollViewer>
+        </Grid>
+        <Grid x:Name="gridTwoExcels" Grid.Row="1" Visibility="Collapsed" Margin="5">
+
+        </Grid>
+    </Grid>
+</Window>
