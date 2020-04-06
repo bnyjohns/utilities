@@ -1,0 +1,53 @@
+﻿<Window x:Class="ReferenceChecker.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ReferenceChecker"
+        mc:Ignorable="d"
+        Title="ReferenceChecker" Height="476.389" Width="717.949">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="lblFilePath" Grid.Row="0">Path to Assemblies:</Label>
+        <TextBox x:Name="txtBoxBinPath" Grid.Row="0" Margin="123,5,-353,5" Padding="0"></TextBox>
+        <Button x:Name="btnBrowsePath" Grid.Row="0" Margin="559,5,-437,5" Click="btnBrowsePath_Click" Padding="0">Browse</Button>
+        <Label x:Name="lblAssemblyName" Grid.Row="1" Margin="0,0,-243,0">Full or part of the AssemblyName(If none given all assemblies will be considered):</Label>
+        <TextBox x:Name="txtBoxReferenceName" Grid.Row="1" Margin="449,5,-437,5" Padding="0"></TextBox>
+        <!--<TextBox x:Name="txtBoxReferenceVersion" Grid.Row="2" Margin="5"></TextBox>-->
+        <Button x:Name="btnCheck" Grid.Row="2" Margin="5,5,125,5" Padding="0" Click="btnCheck_Click">Check!</Button>
+        <Label x:Name="lblResults" Grid.Row="3" Margin="0,0,-353,0"></Label>
+        <DataGrid IsReadOnly="True" Grid.Row="4" Name="dataGrid" VerticalAlignment="Top" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                  ScrollViewer.HorizontalScrollBarVisibility="Auto" Height="296" Margin="5,0,-479,0" AutoGenerateColumns="False" Grid.RowSpan="2">
+            <DataGrid.Columns>
+                <!--<DataGridTextColumn Binding="{Binding Path=SNo}" MinWidth="50" />-->
+                <DataGridTextColumn Binding="{Binding Path=ReferenceAssemblyName}" Header="ReferenceAssemblyName" />
+                <DataGridTextColumn Binding="{Binding Path=ReferenceAssemblyVersion}" Header="ReferenceAssemblyVersion" />
+                <!--<DataGridTextColumn Binding="{Binding Path=ReferenceAssemblyPath}" Header="ReferenceAssemblyPath" />-->
+                <DataGridTextColumn Binding="{Binding Path=ReferencedByAssemblyName}" Width="*" Header="ReferencedByAssemblyName" />                
+            </DataGrid.Columns>
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Style.Triggers>
+                        <!--<DataTrigger Binding="{Binding Path=ReferenceAssemblyVersion}" Value="">
+                            <Setter Property="Background" Value="Green" />
+                        </DataTrigger>-->
+                        <DataTrigger Binding="{Binding Path=ReferenceAssemblyVersion}" Value="{x:Null}">
+                            <Setter Property="Background" Value="Blue"/>
+                            <Setter Property="Foreground" Value="White"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.RowStyle>
+        </DataGrid>
+    </Grid>
+</Window>
